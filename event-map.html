@@ -1,0 +1,275 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js ie9" lang="en"> <![endif]-->
+<!-- Consider adding an manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 9]><!--> <html class="no-js" lang="en" itemscope itemtype="http://schema.org/Product"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  <!-- Use the .htaccess and remove these lines to avoid edge case issues.
+       More info: h5bp.com/b/378 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Event Map</title>
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="humans.txt">
+
+  <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+
+  <!-- Facebook Metadata /-->
+  <meta property="fb:page_id" content="" />
+  <meta property="og:image" content="" />
+  <meta property="og:description" content=""/>
+  <meta property="og:title" content=""/>
+
+  <!-- Google+ Metadata /-->
+  <meta itemprop="name" content="">
+  <meta itemprop="description" content="">
+  <meta itemprop="image" content="">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <!-- We highly recommend you use SASS and write your custom styles in sass/_custom.scss.
+       However, there is a blank style.css in the css directory should you prefer -->
+  <link rel="stylesheet" href="css/gumby.css">
+  <!-- <link rel="stylesheet" href="css/style.css"> -->
+
+  <script src="js/libs/modernizr-2.6.2.min.js"></script>
+</head>
+
+        <style type="text/css">
+        #map_canvas, .sample {
+          width:100%;
+          max-width: 480px;
+          float:left;
+          height:400px !important;
+        }
+
+        #directionsPanel{
+          width:200px;
+          float:right;
+          height:400px;
+          overflow:scroll;
+        }
+        .sample {
+          max-width: 480px;
+          max-height:400px;
+          display:table;
+        }
+        .sample p {
+          background:#efefef;
+          border: 1px solid Gray;
+          display:table-cell;
+          text-align:center;
+          vertical-align:middle;
+        }
+    </style>
+
+<body>
+
+  <!-- navibar -->
+  <!-- container to normalize fixed navigation behavior when scrolling -->
+  <div class="navcontain">
+    <div class="pretty navbar" gumby-fixed="top" id="nav3">
+      <div class="row">
+        <a class="toggle" gumby-trigger="#nav3 > .row > ul" href="#"><i class="icon-menu"></i></a>
+        <h1 class="four columns logo">
+          <a href="#">
+            <img src="./images/tmco_logo.png" gumby-retina class="valign" />
+          </a>
+        </h1>
+        <ul class="eight columns">
+        <li>
+          <a href="./forum.htl"><span>豊中まちづくりフォーラム</span></a>
+        </li>
+        <li><a href="./yose.html"><span>豊中寄席</span></a></li>
+        <li><a href="./index.html"><span>豊中駅前まちづくり会社</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="twelve columns special head">
+      <h1>イベント会場案内地図</h1>
+    </div>
+  </div>
+
+  <div class="clearfix"></div>
+  <!-- main contents include tab section -->
+  <div class="wrapper">
+    <div class="row">
+      <div class="twelve columns">
+        <h4>イベント会場案内地図</h4>
+        <p>
+          豊中まちづくりフォーラム、豊中寄席の開催会場をご案内します。
+        </p>
+      </div>
+    </div>
+    <!-- tab section -->
+    <div class="row">
+      <div class="twelve columns">
+        <section class="pill tabs">
+          <ul class="tab-nav">
+            <li class="active"><a href="#">チャオパルコ</a></li>
+            <li><a href="#">野村證券ホール</a></li>
+            <li><a href="#">ホテル・アイボリー</a></li>
+          </ul>
+          <!-- 北おおさか信用金庫 Chaoparco -->
+          <div class="tab-content active">
+            <div class="row">
+              <!-- Google Map -->
+              <div class="seven columns" id="mapArea">
+                <div id="map_canvas" style="border: 1px solid Gray;">
+                </div>
+              </div>
+              <div class="five columns dont-show-me-on-phones">
+                <div style="border: none;">
+                  <ol>
+                    <li>人口広場へ向けて左側へ進む</li>
+                    <li>国道176号線をまたぎ直進</li>
+                    <li>マストメゾン豊中入口の手前の左階段を降りる</li>
+                    <li>階段を降りたスグ右が入り口</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 野村證券ホール -->
+          <div class="tab-content">
+            <div class="row">
+              <!-- Google Map -->
+              <div class="seven columns">
+                <div class="sample">
+                  <p>「豊中寄席」が開催される野村證券ホールまでの案内地図でです。</p>
+                </div>
+              </div>
+              <div class="five columns">
+                <div style="border: none;">
+                  道順案内
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ホテル・アイボリー -->
+          <div class="tab-content">
+            <div class="row">
+              <!-- Google Map -->
+              <div class="seven columns">
+                <div class="sample">
+                  <p>ホテル・アイボリーまでの案内地図です。</p>
+                </div>
+              </div>
+              <div class="five columns">
+                <div style="border: none;">
+                  道順案内
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <!-- end of tab section -->
+    <div class="row">
+      <div class="twelve columns">
+        <div>
+          <p>地図上のピン（<img src="./images/pin_32.png" style="width:1.1em;">）をクリックすると説明と写真が表示されます。
+          地図は <a href="http://maps.google.co.jp/maps?q=34.788354114023704,135.46298250429913&t=m&z=14" class="tmco" target="_blank">Google Map</a> を使っているため移動・拡大・縮小ができます。豊中駅前まちづくり会社は<a href="#mapArea"><span class="tmco" style="color:darkred;font-weight:bold;">こちら</span></a>です。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end of wrapper -->
+
+  <!-- Footer -->
+  <div class="wrapper">
+    <footer class="row" id="credits">
+      <div class="twelve columns">
+        <p><span class="nobr">&copy; 豊中駅前まちづくり会社</span>
+          <span class="nobr">All rights reserved.</span>
+        </p>
+        <p class="disclaimer" class="tmco">豊中市本町１丁目１２－２５　<span class="nobr">豊中駅前まちづくり会社</span></p>
+      </div>
+    </footer>
+
+  <!-- Grab Google CDN's jQuery, fall back to local if offline -->
+  <!-- 2.0 for modern browsers, 1.10 for .oldie -->
+  <script>
+  var oldieCheck = Boolean(document.getElementsByTagName('html')[0].className.match(/\soldie\s/g));
+  if(!oldieCheck) {
+    document.write('<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"><\/script>');
+  } else {
+    document.write('<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"><\/script>');
+  }
+  </script>
+  <script>
+  if(!window.jQuery) {
+    if(!oldieCheck) {
+      document.write('<script src="js/libs/jquery-2.0.2.min.js"><\/script>');
+    } else {
+      document.write('<script src="js/libs/jquery-1.10.1.min.js"><\/script>');
+    }
+  }
+  </script>
+
+  <!--
+  Include gumby.js followed by UI modules followed by gumby.init.js
+  Or concatenate and minify into a single file -->
+  <script gumby-touch="js/libs" src="js/libs/gumby.js"></script>
+  <script src="js/libs/ui/gumby.retina.js"></script>
+  <script src="js/libs/ui/gumby.fixed.js"></script>
+  <script src="js/libs/ui/gumby.skiplink.js"></script>
+  <script src="js/libs/ui/gumby.toggleswitch.js"></script>
+  <script src="js/libs/ui/gumby.checkbox.js"></script>
+  <script src="js/libs/ui/gumby.radiobtn.js"></script>
+  <script src="js/libs/ui/gumby.tabs.js"></script>
+  <script src="js/libs/ui/gumby.navbar.js"></script>
+  <script src="js/libs/ui/jquery.validation.js"></script>
+  <script src="js/libs/gumby.init.js"></script>
+
+  <!--
+  Google's recommended deferred loading of JS
+  gumby.min.js contains gumby.js, all UI modules and gumby.init.js
+  <script type="text/javascript">
+  function downloadJSAtOnload() {
+  var element = document.createElement("script");
+  element.src = "js/libs/gumby.min.js";
+  document.body.appendChild(element);
+  }
+  if (window.addEventListener)
+  window.addEventListener("load", downloadJSAtOnload, false);
+  else if (window.attachEvent)
+  window.attachEvent("onload", downloadJSAtOnload);
+  else window.onload = downloadJSAtOnload;
+  </script> -->
+
+  <script src="js/plugins.js"></script>
+  <script src="js/main.js"></script>
+
+  <!-- Change UA-XXXXX-X to be your site's ID -->
+  <!--<script>
+  window._gaq = [['_setAccount','UAXXXXXXXX1'],['_trackPageview'],['_trackPageLoadTime']];
+  Modernizr.load({
+    load: ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'
+  });
+  </script>-->
+
+  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+     chromium.org/developers/how-tos/chrome-frame-getting-started -->
+  <!--[if lt IE 7 ]>
+  <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+  <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+  <![endif]-->
+    <!-- Google Map API -->
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+      <!-- infobox.js -->
+      <script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/src/infobox.js"></script>
+      <!--  -->
+      <script type="text/javascript" src="./js/route-guide.js"></script>
+  </body>
+</html>
